@@ -19,29 +19,47 @@ bot.on('message',msg =>{
 
 
 
-   const options =
-    {
-        reply_markup: JSON.stringify({
-            inline_keyboard: [
-                [{
-                    text: 'google',
-                    callback_data: '/go'
-                }]
 
-            ]
-        })
-    }
 
 
     bot.on('callback_query', query =>{
-        const go = query.data.search('/go')
-       return  bot.sendMessage(query.message.chat.id, 'ik',options)
+        const go = query.data.search('')
+       return  bot.sendMessage(chatID, '@orelSreshka_bot /go')
     })
+const go = async () =>{
+    if (text === '/go' & (randomNumber % 2 === 0) ){
+      await  bot.sendSticker(chatID, 'CAACAgIAAxkBAAEFQthizsQ84J6jCPbF7yWjwgSPebi0lAACUx0AAtfzaUqygSLXQdkB4ikE')
+       await bot.sendMessage(chatID, '/go',
+            {
+                reply_markup: JSON.stringify({
+                    inline_keyboard: [
+                        [{
+                            text: '/go',
+                            switch_inline_query_current_chat: '/go'
+                        }]
 
-     if (text === '/go' & (randomNumber % 2 === 0) ){
-        bot.sendSticker(chatID, 'CAACAgIAAxkBAAEFQthizsQ84J6jCPbF7yWjwgSPebi0lAACUx0AAtfzaUqygSLXQdkB4ikE')
-    } if (text === '/go' & (randomNumber % 2 === 1) ) {
-        bot.sendSticker(chatID,'./img/img.png')
+                    ]
+                })
+            }
+        )
+} if (text === '/go' & (randomNumber % 2 === 1) ) {
+       await bot.sendSticker(chatID,'./img/img.png')
+        await bot.sendMessage(chatID, '/go',
+            {
+                reply_markup: JSON.stringify({
+                    inline_keyboard: [
+                        [{
+                            text: '/go',
+                            switch_inline_query_current_chat: '/go'
+                        }]
+
+                    ]
+                })
+            }
+        )
     }
 
+
+}
+go()
 })
