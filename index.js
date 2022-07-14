@@ -43,7 +43,7 @@ const go = async () =>{
             }
         )
 } if (text === '/go' & (randomNumber % 2 === 1) ) {
-       await bot.sendSticker(chatID,'./img/img.png')
+       await bot.sendSticker(chatID,'CAACAgIAAxkBAAEFR6hi0JO8UVRs6oG_8_lFrM7IAAEnpuYAApYUAAIk34hK6VCO6-8kkIApBA')
         await bot.sendMessage(chatID, '/go',
             {
                 reply_markup: JSON.stringify({
