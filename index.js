@@ -2,6 +2,9 @@ const telegramBotApi = require('node-telegram-bot-api');
 const token = '5391660001:AAGQd7SgJECb3GdPary7QzAu7e-5TkjcTWg';
 const bot = new telegramBotApi(token, {polling: true})
 
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
 const button = {
     reply_markup: JSON.stringify({
         inline_keyboard: [
