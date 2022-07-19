@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "./node_modules/.bin/babel ./ --ignore node_modules,build -D -d build",
-    "start": "node build/bin/www.js ENV=production",
-    "dev": "nodemon ./node_modules/.bin/babel-node ./bin/www.js ENV=development"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
