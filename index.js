@@ -35,7 +35,7 @@ bot.on('message', msg => {
             )
         }
         if (chatID === chatID & (randomNumber % 2 === 1) || text === '/start' & (randomNumber % 2 === 1)) {
-            await bot.sendSticker(chatID, 'CAACAgIAAxkBAAEFR6hi0JO8UVRs6oG_8_lFrM7IAAEnpuYAApYUAAIk34hK6VCO6-8kkIApBA')
+            await bot.sendSticker(chatID, 'CAACAgIAAxkBAAEFQthizsQ84J6jCPbF7yWjwgSPebi0lAACUx0AAtfzaUqygSLXQdkB4ikE')
             await bot.sendMessage(chatID, 'Орел', button
             )
         }
