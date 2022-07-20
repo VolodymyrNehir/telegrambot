@@ -42,7 +42,7 @@ bot.on('message', msg => {
 
 
     bot.on('callback_query', async data => {
-        if (data.message.chat.id) {
+        if (data.message.chat.id & chatID) {
             go()
         }
     })
