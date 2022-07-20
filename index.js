@@ -9,20 +9,29 @@ const PORT = process.env.PORT || 3000;
 
 
 
-const button = {
-    reply_markup: JSON.stringify({
-        inline_keyboard: [
-            [{text: 'go', callback_data: '1'}]
-        ]
-
-    })
-}
+// const button = {
+//     reply_markup: JSON.stringify({
+//         inline_keyboard: [
+//             [{text: 'go', callback_data: '1'}]
+//         ]
+//
+//     })
+// }
 // button
 
 bot.on('message', msg => {
     const text = msg.text
     const chatID = msg.chat.id;
     // message
+
+    const button = {
+        reply_markup: JSON.stringify({
+            inline_keyboard: [
+                [{text: 'go', callback_data: '1'}]
+            ]
+
+        })
+    }
 
     const go = async () => {
        const randomNumber = Math.floor(Math.random() * 10)
