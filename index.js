@@ -48,7 +48,7 @@ bot.on('message', msg => {
     })
 
     // action
-if (text === '/start'){
+if (text === '/start' & chatID === chatID){
    return  go()
 }
 })
