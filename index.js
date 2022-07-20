@@ -5,6 +5,7 @@ const bot = new telegramBotApi(token, {polling: true})
 const exspress = require('express');
 
 const app = exspress()
+const PORT = process.env.PORT || 3000;
 
 
 
@@ -51,6 +52,11 @@ if (text === '/start'){
    return  go()
 }
 })
+
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
+
 // app.listen(1997, () => {
 //     console.log('PORT  1997');
 // });
