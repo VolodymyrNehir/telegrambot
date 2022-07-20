@@ -6,8 +6,7 @@ const exspress = require('express');
 
 const app = exspress()
 
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+
 
 const button = {
     reply_markup: JSON.stringify({
@@ -52,6 +51,6 @@ if (text === '/start'){
    return  go()
 }
 })
-app.listen(1997, () => {
-    console.log('PORT  1997');
-});
+// app.listen(1997, () => {
+//     console.log('PORT  1997');
+// });
