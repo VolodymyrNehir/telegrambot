@@ -49,7 +49,7 @@ bot.on('message', msg => {
 bot.on('callback_query', async data => {
     const text = data.message.text
     const id = data.message.chat.id
-    if (id || id & text === '/start') {
+    if (id || id & text === '/start' || '/go') {
         go(data.message.chat.id, data.message.chat.text)
     }
 })
