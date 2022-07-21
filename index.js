@@ -23,12 +23,12 @@ const go = async (id, text) => {
     const randomNumber = Math.floor(Math.random() * 10)
     // Random
 
-    if (id & (randomNumber % 2 === 0) || text === ('/start' & '/go') & (randomNumber % 2 === 0)) {
+    if (id & (randomNumber % 2 === 0) || text === ('/start' || '/go') & (randomNumber % 2 === 0)) {
         await bot.sendSticker(id, 'CAACAgIAAxkBAAEFQthizsQ84J6jCPbF7yWjwgSPebi0lAACUx0AAtfzaUqygSLXQdkB4ikE')
         return  bot.sendMessage(id, 'Решка', button,
         )
     }
-    if (id & (randomNumber % 2 === 1) || text === ('/start' & '/go') & (randomNumber % 2 === 1)) {
+    if (id & (randomNumber % 2 === 1) || text === ('/start' || '/go') & (randomNumber % 2 === 1)) {
         await bot.sendSticker(id, 'CAACAgIAAxkBAAEFR6hi0JO8UVRs6oG_8_lFrM7IAAEnpuYAApYUAAIk34hK6VCO6-8kkIApBA')
         return  bot.sendMessage(id, 'Орел', button
         )
@@ -40,7 +40,7 @@ const go = async (id, text) => {
 bot.on('message', msg => {
     const text = msg.text
     const chatID = msg.chat.id;
-    if (text === ('/start' & '/go') & chatID === chatID) {
+    if (text === ('/start' || '/go') & chatID === chatID) {
         go(chatID, text)
     }
 })
