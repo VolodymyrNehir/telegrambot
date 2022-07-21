@@ -1,13 +1,13 @@
 const telegramBotApi = require('node-telegram-bot-api');
 const {quiet} = require("nodemon/lib/utils");
+const exspress = require('express');
+
 const token = '5391660001:AAGQd7SgJECb3GdPary7QzAu7e-5TkjcTWg';
 const bot = new telegramBotApi(token, {polling: true})
-const exspress = require('express');
 
 const app = exspress()
 const PORT = process.env.PORT || 3000;
-
-
+// PORT
 
 const button = {
     reply_markup: JSON.stringify({
@@ -19,46 +19,44 @@ const button = {
 }
 // button
 
+const go = async (id, text) => {
+    const randomNumber = Math.floor(Math.random() * 10)
+    // Random
+
+    if (id & (randomNumber % 2 === 0) || text === '/start' & (randomNumber % 2 === 0)) {
+        await bot.sendSticker(id, 'CAACAgIAAxkBAAEFQthizsQ84J6jCPbF7yWjwgSPebi0lAACUx0AAtfzaUqygSLXQdkB4ikE')
+        return  bot.sendMessage(id, 'Решка', button,
+        )
+    }
+    if (id & (randomNumber % 2 === 1) || text === '/start' & (randomNumber % 2 === 1)) {
+        await bot.sendSticker(id, 'CAACAgIAAxkBAAEFR6hi0JO8UVRs6oG_8_lFrM7IAAEnpuYAApYUAAIk34hK6VCO6-8kkIApBA')
+        return  bot.sendMessage(id, 'Орел', button
+        )
+    }
+}
+// action
+
+
 bot.on('message', msg => {
     const text = msg.text
     const chatID = msg.chat.id;
-    // message
-
-
-    const go = async () => {
-       const randomNumber = Math.floor(Math.random() * 10)
-        // Random
-
-        if (chatID === chatID & (randomNumber % 2 === 0) || text === '/start' & (randomNumber % 2 === 0)) {
-            await bot.sendSticker(chatID, 'CAACAgIAAxkBAAEFQthizsQ84J6jCPbF7yWjwgSPebi0lAACUx0AAtfzaUqygSLXQdkB4ikE')
-            await bot.sendMessage(chatID, 'Решка', button,
-            )
-        }
-        if (chatID === chatID & (randomNumber % 2 === 1) || text === '/start' & (randomNumber % 2 === 1)) {
-            await bot.sendSticker(chatID, 'CAACAgIAAxkBAAEFR6hi0JO8UVRs6oG_8_lFrM7IAAEnpuYAApYUAAIk34hK6VCO6-8kkIApBA')
-            await bot.sendMessage(chatID, 'Орел', button
-            )
-        }
+    if (text === '/start' & chatID === chatID) {
+        go(chatID, text)
     }
-
-
-    bot.on('callback_query', async data => {
-        if ( chatID) {
-            go()
-        }
-    })
-
-    // action
-if (text === '/start' & chatID === chatID){
-   return  go()
-}
-
 })
+// message
+
+bot.on('callback_query', async data => {
+    const text = data.message.text
+    const id = data.message.chat.id
+    if (id || id & text === '/start') {
+        go(data.message.chat.id, data.message.chat.text)
+    }
+})
+// callback_query
 
 app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
+    console.log(`Our app is running on port ${PORT}`);
 });
 
-// app.listen(1997, () => {
-//     console.log('PORT  1997');
-// });
+
