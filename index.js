@@ -9,6 +9,13 @@ const app = exspress()
 const PORT = process.env.PORT || 3000;
 // PORT
 
+app.get('*',function(req,res,next){
+    if(req.headers['x-forwarded-proto']!='https')
+        res.redirect('https://mypreferreddomain.com'+req.url)
+    else
+        next() /* Continue to other routes if we're not redirecting */
+})
+
 const button = {
     reply_markup: JSON.stringify({
         inline_keyboard: [
