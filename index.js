@@ -1,6 +1,7 @@
 const telegramBotApi = require('node-telegram-bot-api');
 const {quiet} = require("nodemon/lib/utils");
 const exspress = require('express');
+const {restartable} = require("nodemon/lib/config/defaults");
 
 const token = '5391660001:AAGQd7SgJECb3GdPary7QzAu7e-5TkjcTWg';
 const bot = new telegramBotApi(token, {polling: true})
@@ -9,13 +10,17 @@ const app = exspress()
 const PORT = process.env.PORT || 3000;
 // PORT
 
+let id = null;
+
 function myFunction() {
-    timeout = setTimeout(alertFunc, 1740000);
+    timeout = setTimeout(alertFunc, 15000);
 }
 
 function alertFunc() {
-    console.log("Hello!");
-    return myFunction()
+    console.log(id)
+
+    // bot.sendChatAction(id,restartable) ;
+return myFunction()
 }
 
 myFunction();
@@ -52,6 +57,7 @@ const go = async (id, text) => {
 bot.on('message', msg => {
     const text = msg.text
     const chatID = msg.chat.id;
+    id = chatID
     if (text === ('/start' || '/go') & chatID === chatID) {
         go(chatID, text)
     }
