@@ -10,14 +10,13 @@ const app = exspress()
 const PORT = process.env.PORT || 3000;
 // PORT
 
-let id = null;
 
 function myFunction() {
-    timeout = setTimeout(alertFunc, 15000);
+    timeout = setTimeout(alertFunc, 1740000);
 }
 
 function alertFunc() {
-    console.log(id)
+    bot.startPolling(ctx => ctx.reply_markup());
 
     // bot.sendChatAction(id,restartable) ;
 return myFunction()
